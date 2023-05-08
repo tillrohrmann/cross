@@ -125,6 +125,7 @@ pub(crate) fn run(
             .wrap_err("when building custom image")?;
     }
 
+    println!("Execute local docker command: {docker:?}\nImage name: {image_name:?}\nToolchain: {toolchain_dirs:?}\nCmd: {cmd:?}");
     ChildContainer::create(engine.clone(), container_id)?;
     let status = docker
         .arg(&image_name)

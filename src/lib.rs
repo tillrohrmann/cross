@@ -539,6 +539,8 @@ pub fn run(
             }
         };
 
+        println!("Found image: {image:?}\nTarget: {target:?}");
+
         config.confusable_target(&target, msg_info)?;
 
         let picked_generic_channel =
@@ -616,6 +618,7 @@ pub fn run(
                     msg_info,
                 )?;
 
+                println!("Running docker command now: {options:?}",);
                 let status = docker::run(options, paths, &filtered_args, args.subcommand, msg_info)
                     .wrap_err("could not run container")?;
                 let needs_host = args.subcommand.map_or(false, |sc| sc.needs_host(is_remote));
