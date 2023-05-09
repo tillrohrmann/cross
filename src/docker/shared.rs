@@ -1084,7 +1084,7 @@ impl DockerCommandExt for Command {
 
     fn add_build_command(&mut self, dirs: &ToolchainDirectories, cmd: &SafeCommand) -> &mut Self {
         let build_command = format!(
-            "PATH=\"$PATH\":\"{}/bin\" {:?}",
+            "PATH=\"{}/bin\":\"$PATH\" {:?}",
             dirs.sysroot_mount_path(),
             cmd
         );
